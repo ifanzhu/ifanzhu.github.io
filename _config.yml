@@ -1,6 +1,0 @@
-#baseurl : /codoc
-BASE_PATH : false
-ASSET_PATH : false
-paginate: 1  
-paginate_path: "page:num"
-
