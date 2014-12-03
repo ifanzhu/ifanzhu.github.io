@@ -51,9 +51,9 @@
   return new Date(utcDate);
     }
     function formatDate(date) {
-      var monthNames = [ "January", "February", "March", "April", "May", "June",
-          "July", "August", "September", "October", "November", "December" ];
-      return date.getDate() + ' ' + monthNames[date.getMonth()] + ' ' + date.getFullYear();
+      var monthNames = [ "01", "02", "03", "04", "05", "06",
+          "07", "08", "09", "10", "11", "12" ];
+      return  date.getFullYear()+ '-' + monthNames[date.getMonth()] + '-' +date.getDate()  ;
     }
     function findEntries(q) {
       var matches = [];
@@ -71,12 +71,12 @@
           matches.push({'title': title, 'link': link, 'date': updated, 'content': content});
         }
       }
-      var html = '<h2>Search Result:</h2><br>';
+      var html = '<br>';
       for (var i = 0; i < matches.length; i++) {
         var match = matches[i];
-        html += '<h2><a href="' + match.link + '">' + htmlEscape(match.title) + '</a></h2>';
+        html += '<h3><a href="' + match.link + '">' + htmlEscape(match.title) + '</a></h3>';
         html += '<section><p>' + htmlEscape(match.content) + '</p></section>';
-        html += '<footer><p>Update: ' + match.date + '</p></footer>';
+        html += '<footer><p> ' + match.date + '</p></footer>';
       }
       $('.raw').html(html);
       $('#search-loader').hide();
