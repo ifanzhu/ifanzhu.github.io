@@ -1,0 +1,33 @@
+---
+layout: default
+---
+<div class="col-md-9">
+  {% for post in paginator.posts %}
+  <h3>{{ post.date | date:'%Y-%m-%d' }} &nbsp  <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h3>
+  {% if post.content contains "<!-- more -->" %}
+  {{ post.content | split:'<!-- more -->' | first }}
+  {% else %}
+  {{ post.content | strip_html | truncatewords:50 }}
+  {% endif %}
+  {% endfor %}
+
+  <!-- Pagination links -->
+  <div class="pager">
+    {% if paginator.total_pages > 1 %}  
+    {% if paginator.previous_page %}    
+    <a class="btn btn-primary btn-sm" href="{{ paginator.previous_page_path }}">&laquo; 上一页</a>
+    {% endif %}    
+    <span><a class="btn btn-primary btn-sm disabled">{{paginator.page}}/{{paginator.total_pages}}</a></span>
+    {% if paginator.next_page %}
+    <a class="btn btn-primary btn-sm" href="{{ paginator.next_page_path }}">下一页 &raquo;</a>    
+    {% endif %}
+   {% endif %}  
+  </div>
+</div>
+<div class="col-md-3 visible-lg visible-md">
+  {% include categories.html %}
+  {% include recently_posts.html %}
+  {% include recently_comments.html %}
+  {% include blogroll.html %}
+</div>
+<div class="clearfix"></div>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  {% include head.html %}
+
+  <body>
+    <div class="container">
+      {% include header.html %}
+
+      <article class="wrapper">
+      <div class="raw">
+        <div id="search-loader" style="display:none;text-align:center">
+          <img src="{{ BASE_PATH }}/assets/images/loading.gif">
+        </div>
+        {{ content }}
+      </div>
+      </article>
+
+      {% include footer.html %}
+    </div>
+
+    <script src="{{ BASE_PATH }}/assets/js/jquery.min.js"></script>
+    <script src="{{ BASE_PATH }}/assets/js/bootstrap.min.js"></script>
+    <script src="{{ BASE_PATH }}/assets/js/webcore.js"></script>
+
+    
+    {% if site.comments.duoshuo.name %}
+    <!-- duoshuo Begin -->
+   <script type="text/javascript">
+   var duoshuoQuery = {short_name:"{{ site.comments.duoshuo.name }}"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+    <!-- duoshuo End -->
+    {% endif %}
+  </body>
+</html>

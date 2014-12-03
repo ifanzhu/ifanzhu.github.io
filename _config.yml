@@ -1,0 +1,45 @@
+# Site settings
+title: "fanzhu blog"
+description: "fanzhu blog"
+keywords: "分布式存储,自动化运维"
+baseurl: ""
+url: "http:////ifanzhu.github.io"
+#highlighter: pygments
+#page
+paginate: 1 
+paginate_path: "page:num"
+
+author:
+    name: fanzhu
+    github: ifanzhu 
+    qq: 363186124    
+    
+atom_path: /atom.xml
+
+# Build settings
+#markdown: redcarpet
+#redcarpet:
+#    extensions: ["fenced_code_blocks", "tables", "highlight", "strikethrough"]
+#permalink: /:categories/:year-:month/:title.html
+
+# comment
+comments:
+    duoshuo:
+        name: ifanzhu                               # short name
+        rcomments:
+            num: 10
+            avatar: 1
+            time: 1
+            title: 0
+            admin: 0
+            length: 30
+ 
+
+# blogroll
+blogroll: true
+brlist:    
+    - text: "csdn"
+      url : http://www.csdn.net/
+    - text: "infoq"
+      url : http://www.infoq.com/cn/
+
