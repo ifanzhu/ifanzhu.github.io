@@ -9,38 +9,37 @@ tags: [Elastic, 分布式搜索]
 
 
 <p>
-elastic单机安装部署：
 
-1.安装Java7
-注意设置环境变量JAVA_HOME
+1.安装Java7 <br>
+注意设置环境变量JAVA_HOME  <br>
 
-2.下载
-http://www.elasticsearch.org/overview/elkdownloads/
+2.下载 <br>
+http://www.elasticsearch.org/overview/elkdownloads/  <br>
 
-http://www.elasticsearch.org/overview/elkdownloads/
-
+http://www.elasticsearch.org/overview/elkdownloads/  <br>
 
 
-3.解压安装
-解压elasticsearch
 
-mkdir   -p    /usr/local/search
-cp   /opt/elasticsearch-1.3.1.tar.gz            /usr/local/search/
-cd   /usr/local/search
-tar   -zxvf     elasticsearch-1.3.1.tar.gz 
+3.解压安装 <br>
+解压elasticsearch <br>
+
+mkdir   -p    /usr/local/search  <br>
+cp   /opt/elasticsearch-1.3.1.tar.gz            /usr/local/search/ <br>
+cd   /usr/local/search  <br>
+tar   -zxvf     elasticsearch-1.3.1.tar.gz   <br>
 
  <img src="{{ BASE_PATH }}/assets/images/2014/pic1.png">
 
 
 
 
-4.启动停止
-4.1启动
-4.1.1linux:
-前台运行：
- /usr/local/search/elasticsearch-1.3.1/bin/elasticsearch
-后台运行：
- /usr/local/search/elasticsearch-1.3.1/bin/elasticsearch      -d
+4.启动停止<br>
+4.1启动<br>
+4.1.1linux:<br>
+前台运行：<br>
+ /usr/local/search/elasticsearch-1.3.1/bin/elasticsearch<br>
+后台运行：<br>
+ /usr/local/search/elasticsearch-1.3.1/bin/elasticsearch      -d  <br>
 
  <img src="{{ BASE_PATH }}/assets/images/2014/pic2.png">
  <img src="{{ BASE_PATH }}/assets/images/2014/pic3.png">
@@ -48,85 +47,85 @@ tar   -zxvf     elasticsearch-1.3.1.tar.gz
 
 
        
-         可以在启动时通过-X和-D来指定配置参数，此处指定的配置参数将覆盖掉JAVA_OPTS或者ES_JAVA_OPTS中的参数。例如：$ bin/elasticsearch -Xmx2g -Xms2g -Des.index.store.type=memory --node.name=my-node
+         可以在启动时通过-X和-D来指定配置参数，此处指定的配置参数将覆盖掉JAVA_OPTS或者ES_JAVA_OPTS中的参数。例如：$ bin/elasticsearch -Xmx2g -Xms2g -Des.index.store.type=memory --node.name=my-node  <br>
 
-4.1.2windows:
- bin/elasticsearch.bat 
+4.1.2windows:<br>
+ bin/elasticsearch.bat <br>
 
-4.2停止
+4.2停止<br>
 
-kill   pid
+kill   pid  <br>
 
 
-5.测试
+5.测试<br>
 
- curl -X GET http://10.41.2.85:9200/
+ curl -X GET http://10.41.2.85:9200/<br>
 
 <img src="{{ BASE_PATH }}/assets/images/2014/pic4.png">
 
 
-6.服务器环境
-      如果是在服务器上运行elasticsearch,可以使用elasticsearch-servicewrapper这个es插件。它支持通过参数，指定是在后台或前台运行es,并且支持启动，停止，重启es服务（默认情况下只能通过ctrl+c或kill pid的方式来停止es服务进程）。具体步骤如下：
-6.1下载elasticsearch-servicewrapper
+6.服务器环境<br>
+      如果是在服务器上运行elasticsearch,可以使用elasticsearch-servicewrapper这个es插件。它支持通过参数，指定是在后台或前台运行es,并且支持启动，停止，重启es服务（默认情况下只能通过ctrl+c或kill pid的方式来停止es服务进程）。具体步骤如下：<br>
+6.1下载elasticsearch-servicewrapper<br>
 
-https://github.com/elasticsearch/elasticsearch-servicewrapper
+https://github.com/elasticsearch/elasticsearch-servicewrapper<br>
 
-https://github.com/elasticsearch/elasticsearch-servicewrapper
+https://github.com/elasticsearch/elasticsearch-servicewrapper<br>
 
-https://github.com/elasticsearch/elasticsearch-servicewrapper
-
-
-6.2解压
-cp   /opt/elasticsearch-servicewrapper-master.zip     /usr/local/search/
-cd   /usr/local/search
-unzip   elasticsearch-servicewrapper-master.zip 
-
-6.3安装
-
-将解压后的elasticsearch-servicewrapper的service文件夹，放到es的bin目录下即可。
-cp    -r      /usr/local/search/elasticsearch-servicewrapper-master/service      /usr/local/search/elasticsearch-1.3.1/bin/
+https://github.com/elasticsearch/elasticsearch-servicewrapper<br>
 
 
-6.4配置
-     在service目录下有个elasticsearch.conf配置文件，主要是设置一些java运行环境参数，其中比较重要的是下面的 参数： 
-#es的home路径，不用用默认值就可以 
-set.default.ES_HOME=<Path to ElasticSearch Home>     #必须配置，指定es的home
-set.default.ES_HEAP_SIZE=1024        #分配给es的最大内存 
- wrapper.startup.timeout=300           # 启动等待超时时间（以秒为单位）
- wrapper.shutdown.timeout=300       #关闭等待超时时间（以秒为单位）
-wrapper.ping.timeout=300                  #ping超时时间(以秒为单位)
+6.2解压<br>
+cp   /opt/elasticsearch-servicewrapper-master.zip     /usr/local/search/<br>
+cd   /usr/local/search<br>
+unzip   elasticsearch-servicewrapper-master.zip <br>
+
+6.3安装<br>
+
+将解压后的elasticsearch-servicewrapper的service文件夹，放到es的bin目录下即可。<br>
+cp    -r      /usr/local/search/elasticsearch-servicewrapper-master/service      /usr/local/search/elasticsearch-1.3.1/bin/<br>
 
 
-vi    /usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch.conf 
-set.default.ES_HOME=/usr/local/search/elasticsearch-1.3.1
+6.4配置<br>
+     在service目录下有个elasticsearch.conf配置文件，主要是设置一些java运行环境参数，其中比较重要的是下面的 参数：<br> 
+#es的home路径，不用用默认值就可以 <br>
+set.default.ES_HOME=<Path to ElasticSearch Home>     #必须配置，指定es的home<br>
+set.default.ES_HEAP_SIZE=1024        #分配给es的最大内存 <br>
+ wrapper.startup.timeout=300           # 启动等待超时时间（以秒为单位）<br>
+ wrapper.shutdown.timeout=300       #关闭等待超时时间（以秒为单位）<br>
+wrapper.ping.timeout=300                  #ping超时时间(以秒为单位)<br>
+
+
+vi    /usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch.conf <br>
+set.default.ES_HOME=/usr/local/search/elasticsearch-1.3.1<br>
 
 <img src="{{ BASE_PATH }}/assets/images/2014/pic5.png">
 
 
-6.5启停
+6.5启停<br>
 
-下面是命令集合：
-/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch   console       #在前台运行es
-/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch   start      #在后台运行es
-/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch    stop      #停止es 
-/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch     install      #使es作为服务在服务器启动时自动启动
-/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch     remove      #取消启动时自动启动
+下面是命令集合：<br>
+/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch   console       #在前台运行es  <br>
+/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch   start      #在后台运行es<br>
+/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch    stop      #停止es <br>
+/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch     install      #使es作为服务在服务器启动时自动启动<br>
+/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch     remove      #取消启动时自动启动<br>
 
-6.5.1启动
-/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch   start      
+6.5.1启动<br>
+/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch   start      <br>
 
 <img src="{{ BASE_PATH }}/assets/images/2014/pic6.png">
 
-6.5.2停止
+6.5.2停止 <br>
 
-/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch    stop      
+/usr/local/search/elasticsearch-1.3.1/bin/service/elasticsearch    stop      <br>
 
 <img src="{{ BASE_PATH }}/assets/images/2014/pic7.png">
 
 
-6.6.测试
+6.6.测试  <br>
 
- curl -X GET http://10.41.2.85:9200/
+ curl -X GET http://10.41.2.85:9200/  <br>
 
 <img src="{{ BASE_PATH }}/assets/images/2014/pic8.png">
 
